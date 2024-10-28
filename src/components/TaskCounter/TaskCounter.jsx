@@ -1,4 +1,3 @@
-// 1. Імпортуємо хук
 import { useSelector } from 'react-redux';
 
 const TaskCounter = () => {

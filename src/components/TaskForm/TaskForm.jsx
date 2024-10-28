@@ -1,6 +1,5 @@
 import { useDispatch } from 'react-redux';
 import Button from '../Button/Button';
-import { addTask } from '../../redux/tasksSlice';
 import css from './TaskForm.module.css';
 
 const TaskForm = () => {
@@ -10,16 +9,6 @@ const TaskForm = () => {
   const handleSubmit = event => {
     event.preventDefault();
     const form = event.target;
-
-    //  Викликаємо фабрику екшену та передаємо дані для payload
-    //  Відправляємо результат - екшен створення завдання
-    dispatch(
-      addTask({
-        id: crypto.randomUUID(),
-        completed: false,
-        text: form.elements.text.value,
-      })
-    );
     form.reset();
   };
 
