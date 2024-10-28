@@ -1,20 +1,17 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const slice = createSlice({
+const filtersSlice = createSlice({
   name: 'filters',
-
   initialState: {
     status: 'all',
   },
-
   reducers: {
     setStatusFilter(state, action) {
-      // ✅ Immer замінить це на операцію оновлення
       state.status = action.payload;
     },
   },
 });
 
-export const { setStatusFilter } = slice.actions;
+export const { setStatusFilter } = filtersSlice.actions;
 
-export default slice.reducer;
+export default filtersSlice.reducer;
