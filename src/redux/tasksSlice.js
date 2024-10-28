@@ -1,33 +1,32 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const slice = createSlice({
+const taskSlice = createSlice({
   name: 'tasks',
-
   initialState: {
     items: [],
+    isLoading: false,
+    error: null,
   },
 
   reducers: {
-    addTask: (state, action) => {
-      // ✅ Immer замінить це на операцію оновлення
-      state.items.push(action.payload);
+    // Виконається в момент старту HTTP-запиту
+    fetchingInProgress(state) {
+      state.isLoading = true;
     },
-    deleteTask: (state, action) => {
-      // ✅ Immer замінить це на операцію оновлення
-      state.items = state.items.filter(item => item.id !== action.payload);
+    // Виконається якщо HTTP-запит завершився успішно
+    fetchingSuccess(state, action) {
+      state.isLoading = false;
+      state.error = null;
+      state.items = action.payload;
     },
-    toggleCompleted: (state, action) => {
-      // ✅ Immer замінить це на операцію оновлення
-      for (const task of state.items) {
-        if (task.id === action.payload) {
-          task.completed = !task.completed;
-          break;
-        }
-      }
+    // Виконається якщо HTTP-запит завершився з помилкою
+    fetchingError(state, action) {
+      state.isLoading = false;
+      state.error = null;
+      state.error = action.payload;
     },
   },
 });
 
-export const { addTask, deleteTask, toggleCompleted } = slice.actions;
-
-export default slice.reducer;
+export const { fetchingInProgress, fetchingSuccess, fetchingError } =
+  taskSlice.actions;
