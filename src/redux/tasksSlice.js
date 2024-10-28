@@ -30,3 +30,4 @@ const taskSlice = createSlice({
 
 export const { fetchingInProgress, fetchingSuccess, fetchingError } =
   taskSlice.actions;
+export default taskSlice.reducer;
