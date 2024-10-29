@@ -60,6 +60,10 @@ const tasksSlice = createSlice({
           task => task.id === action.payload.id
         );
         state.items.splice(index, 1, action.payload);
+      })
+      .addCase(toggleCompleted.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
       });
   },
 });
