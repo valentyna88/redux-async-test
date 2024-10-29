@@ -43,3 +43,16 @@ export const deleteTask = createAsyncThunk(
     }
   }
 );
+export const toggleCompleted = createAsyncThunk(
+  'task/toggleCompleted',
+  async (task, thunkApi) => {
+    try {
+      const response = await axios.put(`/tasks/${task.id}`, {
+        completed: !task.completed,
+      });
+      return response.data;
+    } catch (e) {
+      return thunkApi.rejectWithValue(e.message);
+    }
+  }
+);
