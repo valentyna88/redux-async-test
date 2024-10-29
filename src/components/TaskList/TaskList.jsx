@@ -1,4 +1,3 @@
-// 1. Імпортуємо хук
 import { useSelector } from 'react-redux';
 import Task from '../Task/Task';
 import css from './TaskList.module.css';
