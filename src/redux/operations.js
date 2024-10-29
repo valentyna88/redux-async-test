@@ -19,4 +19,15 @@ export const fetchTasks = createAsyncThunk(
     }
   }
 );
-// export default fetchTasks;
+
+export const addTask = createAsyncThunk(
+  'task/addTask',
+  async (text, thunkApi) => {
+    try {
+      const response = await axios.post('/tasks', { text });
+      return response.data;
+    } catch (e) {
+      return thunkApi.rejectWithValue(e.message);
+    }
+  }
+);
