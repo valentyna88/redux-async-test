@@ -1,26 +1,13 @@
 import { useSelector } from 'react-redux';
+import { selectTaskCount } from '../../redux/selectors';
 
 const TaskCounter = () => {
-  // 2. Отримуємо масив завдань із стану Redux
-  const tasks = useSelector(state => state.tasks.items);
-
-  // 3. На базі стану Redux отримуємо похідні дані
-  const count = tasks.reduce(
-    (acc, task) => {
-      if (task.completed) {
-        acc.completed += 1;
-      } else {
-        acc.active += 1;
-      }
-      return acc;
-    },
-    { active: 0, completed: 0 }
-  );
+  const { active, completed } = useSelector(selectTaskCount);
 
   return (
     <div>
-      <p>Active: {count.active}</p>
-      <p>Completed: {count.completed}</p>
+      <p>Active: {active}</p>
+      <p>Completed: {completed}</p>
     </div>
   );
 };
