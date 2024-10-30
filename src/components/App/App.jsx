@@ -1,11 +1,11 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { fetchTasks } from '../../redux/operations';
-import { selectError, selectIsLoading } from '../../redux/selectors';
+import { Layout } from '../Layout/Layout';
 import AppBar from '../AppBar/AppBar';
 import TaskForm from '../TaskForm/TaskForm';
 import TaskList from '../TaskList/TaskList';
-import css from './App.module.css';
+import { fetchTasks } from '../../redux/operations';
+import { selectError, selectIsLoading } from '../../redux/selectors';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -17,12 +17,12 @@ const App = () => {
   }, [dispatch]);
 
   return (
-    <div className={css.container}>
+    <Layout>
       <AppBar />
       <TaskForm />
       {isLoading && !error && <b>Request in progress...</b>}
       <TaskList />
-    </div>
+    </Layout>
   );
 };
 
