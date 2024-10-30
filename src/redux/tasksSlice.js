@@ -17,7 +17,6 @@ const tasksSlice = createSlice({
     isLoading: false,
     error: null,
   },
-  //Додаємо обробку зовнішніх екшенів
   extraReducers: builder => {
     builder
       .addCase(fetchTasks.pending, handlePending)
@@ -57,4 +56,4 @@ const tasksSlice = createSlice({
   },
 });
 
-export default tasksSlice.reducer;
+export const tasksReducer = tasksSlice.reducer;

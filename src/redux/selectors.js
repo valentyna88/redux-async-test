@@ -9,7 +9,6 @@ export const selectError = state => state.tasks.error;
 export const selectStatusFilter = state => state.filters.status;
 
 export const selectVisibleTasks = state => {
-  // Використовуємо інші селектори
   const tasks = selectTasks(state);
   const statusFilter = selectStatusFilter(state);
 
