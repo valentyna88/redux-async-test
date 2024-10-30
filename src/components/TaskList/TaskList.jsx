@@ -6,13 +6,15 @@ import css from './TaskList.module.css';
 const TaskList = () => {
   const tasks = useSelector(selectVisibleTasks);
 
-  <ul className={css.list}>
-    {tasks.map(task => (
-      <li className={css.listItem} key={task.id}>
-        <Task task={task} />
-      </li>
-    ))}
-  </ul>;
+  return (
+    <ul className={css.list}>
+      {tasks.map(task => (
+        <li className={css.listItem} key={task.id}>
+          <Task task={task} />
+        </li>
+      ))}
+    </ul>
+  );
 };
 
 export default TaskList;

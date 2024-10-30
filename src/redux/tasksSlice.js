@@ -30,7 +30,7 @@ const tasksSlice = createSlice({
       .addCase(addTask.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        state.items.push(action.payload);
+        state.items.push(action.payload); // Додаємо нове завдання до масиву
       })
       .addCase(addTask.rejected, handleRejected)
       .addCase(deleteTask.pending, handlePending)
